@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgtw7032th7d0"]
+
+[ext_resource type="Script" path="res://test_case/ParticlesGPUMesh.gd" id="1_eekop"]
+[ext_resource type="PackedScene" uid="uid://bofpmmfvuou8h" path="res://assets/rat_CC0_overactiongames.itch.io_.glb" id="2_358ps"]
+[ext_resource type="PackedScene" uid="uid://d06yuop1skyur" path="res://resource/particles_gpu_3d.tscn" id="3_bfvd5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xi26f"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.75, 0.75, 0.75, 1)
+sky_energy_multiplier = 2.15
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.75, 0.75, 0.75, 1)
+
+[sub_resource type="Sky" id="Sky_xwsfr"]
+sky_material = SubResource("ProceduralSkyMaterial_xi26f")
+
+[sub_resource type="Environment" id="Environment_31dag"]
+background_mode = 1
+sky = SubResource("Sky_xwsfr")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_eekop")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_31dag")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.718284, 0.69575, 0, -0.69575, 0.718284, 0.00142145, 2.32476, 1.15811)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 329.0
+offset_bottom = 39.0
+text = "Single click to Spawn Particles normally.
+Press and hold for unexpected transform accumulation.
+
+Posssibly related to `GPUParticles3D::restart()`"
+
+[node name="GPUParticles3D" parent="." instance=ExtResource("3_bfvd5")]
+
+[node name="rat" parent="." instance=ExtResource("2_358ps")]
+transform = Transform3D(-0.703851, -0.382134, -0.598803, 0.28469, 0.620562, -0.730654, 0.650803, -0.684745, -0.327994, -0.0313218, -0.375089, -2.15365)

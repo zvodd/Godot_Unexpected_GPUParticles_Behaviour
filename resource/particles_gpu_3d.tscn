@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d06yuop1skyur"]
+
+[ext_resource type="Material" uid="uid://c8v46p6puqyan" path="res://resource/fire_particle.material" id="1_dlpqn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gygd0"]
+lifetime_randomness = 0.4
+angular_velocity_max = 157.81
+gravity = Vector3(0, -3, 0)
+radial_accel_min = 9.13
+radial_accel_max = 12.79
+turbulence_noise_speed_random = 1.35
+turbulence_influence_max = 0.26
+
+[sub_resource type="PrismMesh" id="PrismMesh_60jlk"]
+material = ExtResource("1_dlpqn")
+size = Vector3(0.1, 0.4, 0.1)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.02
+randomness = 0.29
+fixed_fps = 12
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_gygd0")
+draw_pass_1 = SubResource("PrismMesh_60jlk")
